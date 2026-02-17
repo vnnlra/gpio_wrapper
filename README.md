@@ -19,14 +19,8 @@ semplici:
 -   `gpio_write()` → scrive 0/1 su un pin\
 -   `gpio_read()` → legge 0/1 da un pin
 
-Senza dover gestire direttamente:
+Senza dover gestire direttamente strutture complesse del linguaggio C 
 
--   `gpiod_chip`
--   `gpiod_line_settings`
--   `gpiod_line_config`
--   `gpiod_request_config`
--   array di offset
--   gestione delle request
 
 ------------------------------------------------------------------------
 
