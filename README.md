@@ -143,14 +143,13 @@ int main() {
 
 Questo progetto nasce per:
 
--   Corsi introduttivi di programmazione in C
+-   Corsi introduttivi di programmazione in C che usano ibrerie esterne
 -   Laboratori di sistemi embedded
 -   Introduzione al concetto di I/O digitale
 -   Attività pratiche con Raspberry Pi
 
 L'obiettivo è permettere agli studenti di concentrarsi su:
 
--   strutture di controllo (`if`, `while`)
 -   logica booleana
 -   lettura e scrittura digitale
 -   interazione hardware base
