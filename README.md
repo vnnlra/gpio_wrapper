@@ -14,9 +14,9 @@ puntatori.
 Permettere agli studenti di utilizzare i GPIO con poche funzioni
 semplici:
 
--   `gpio_out()` → configura un pin come uscita\
--   `gpio_in()` → configura un pin come ingresso\
--   `gpio_write()` → scrive 0/1 su un pin\
+-   `gpio_init_out()` → configura un pin come uscita
+-   `gpio_init_in()` → configura un pin come ingresso
+-   `gpio_write()` → scrive 0/1 su un pin
 -   `gpio_read()` → legge 0/1 da un pin
 
 Senza dover gestire direttamente strutture complesse del linguaggio C 
