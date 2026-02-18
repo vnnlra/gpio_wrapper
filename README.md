@@ -105,8 +105,8 @@ int main() {
 
 int main() {
 
-    gpio_out(LED, 0);
-    gpio_in(BTN);
+    gpio_init_out(LED, 0);
+    gpio_init_in(BTN);
 
     while (1) {
 
