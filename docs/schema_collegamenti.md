@@ -6,7 +6,7 @@ Raspberry Pi in C.
 
 ## 📷 Schema di collegamento p
 
-![Schema LED e LED+Pulsante](docs/led+button.png)
+![Schema LED e LED+Pulsante](led+button.png)
 
 > Nota: il numero del pin è in numerazione BCM.
 
