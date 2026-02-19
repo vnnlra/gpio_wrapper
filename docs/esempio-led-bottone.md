@@ -4,9 +4,13 @@ Documentazione degli esempi di laboratorio basati sul wrapper
 `gpio_wrapper`. Gli esempi mostrano l'utilizzo base dei GPIO della
 Raspberry Pi in C.
 
-## 📷 Schema di collegamento p
+## 📷 Cablaggio esempi LED e LED+Pulsante
 
-![Schema LED e LED+Pulsante](led+button.png)
+![Schema LED e LED+Pulsante](cablaggio-led-bottone.png)
+
+## 📷 Circuito esempi LED e LED+Pulsante
+
+![Schema LED e LED+Pulsante](circuito-led-bottone.png)
 
 > Nota: il numero del pin è in numerazione BCM.
 
