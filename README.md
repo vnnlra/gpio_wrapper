@@ -7,6 +7,7 @@ Progetto pensato per uso didattico: semplifica l'API ufficiale di
 libgpiod nascondendo la complessità di strutture, configurazioni e
 puntatori.
 
+
 ------------------------------------------------------------------------
 
 ## 🎯 Obiettivo
@@ -21,16 +22,19 @@ semplici:
 
 Senza dover gestire direttamente strutture complesse del linguaggio C 
 
+La libreria contiene anche funzioni per gestire i segnali PWM ed è in aggiornamento
 
 ------------------------------------------------------------------------
 
 ## 📂 Struttura del progetto
 
     gpio_wrapper/
+    ├── esempi/
+    |   ├── led.c
+    |   ├── led_button.c    
+    |   └── esempio_led_bottone.md
     ├── gpio.h
     ├── gpio.c
-    ├── led.c
-    ├── led_button.c
     └── README.md
 
 ------------------------------------------------------------------------
@@ -52,76 +56,22 @@ Se compare `gpiochip0`, il sistema è pronto.
 
 ## ⚙️ Compilazione
 
-Esempio LED:
+Esempio:
 
-    gcc led.c gpio.c -o led -lgpiod
+    gcc mio_file.c gpio.c -o mio_eseguibile -lgpiod
 
-Esempio LED + Button:
+Esecuzione:
 
-    gcc led_button.c gpio.c -o led_button -lgpiod
+    ./mio_eseguibile
 
-Esecuzione (serve accesso ai GPIO):
-
-    sudo ./led
-
-Oppure aggiungere l'utente al gruppo `gpio`.
 
 ------------------------------------------------------------------------
 
-## 💡 Esempio: LED lampeggiante
-
-``` c
-#include "gpio.h"
-#include <unistd.h>
-
-#define LED 17
-
-int main() {
-
-    gpio_out(LED, 0);
-
-    while (1) {
-        gpio_write(LED, 1);
-        sleep(1);
-        gpio_write(LED, 0);
-        sleep(1);
-    }
-
-    gpio_close();
-    return 0;
-}
-```
+## 💡 Esempio: LED lampeggiante led.c
 
 ------------------------------------------------------------------------
 
-## 🔘 Esempio: LED + Pulsante
-
-``` c
-#include "gpio.h"
-#include <unistd.h>
-
-#define LED 17
-#define BTN 23
-
-int main() {
-
-    gpio_init_out(LED, 0);
-    gpio_init_in(BTN);
-
-    while (1) {
-
-        if (gpio_read(BTN))
-            gpio_write(LED, 1);
-        else
-            gpio_write(LED, 0);
-
-        usleep(10000);
-    }
-
-    gpio_close();
-    return 0;
-}
-```
+## 🔘 Esempio: LED + Pulsante led_button.c
 
 ------------------------------------------------------------------------
 
