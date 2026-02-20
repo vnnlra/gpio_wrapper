@@ -6,9 +6,6 @@
 
 int main() {
 
-    gpio_init_out(LED, 1);   // acceso fisso
-    sleep(5);
-    gpio_write(LED, 0);
 
     // range 100, parte spento
     gpio_init_pwm(LED, 0, 50);
