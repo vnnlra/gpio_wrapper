@@ -7,6 +7,13 @@ Progetto pensato per uso didattico: semplifica l'API ufficiale di
 libgpiod nascondendo la complessità di strutture, configurazioni e
 puntatori.
 
+Il Wrapper è costituito dai file gpio.c e gpio.h che vanno compilati insieme al
+proprio codice:
+
+``` c
+gcc mio_file.c gpio.c -o mio_eseguibile -lgipiod
+
+```
 
 ------------------------------------------------------------------------
 
