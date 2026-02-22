@@ -12,7 +12,7 @@ int main() {
 
     while (1) {
         res = gpio_read(BTN);
-        //DEBUG:printf("btn = %d\n",res);
+        DEBUG:printf("btn = %d\n",res);
         if (res == 1){
             gpio_write(LED, 1);
         }
