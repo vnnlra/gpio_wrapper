@@ -1,120 +1,93 @@
-# gpio_wrapper
+# GPIO Wrapper -- Raspberry Pi
 
-Wrapper minimale per l'utilizzo dei GPIO della Raspberry Pi in C, basato
-su **libgpiod v2**.
+Mini wrapper didattico per utilizzare i GPIO del Raspberry Pi con
+**libgpiod**.
 
-Progetto pensato per uso didattico: semplifica l'API ufficiale di
-libgpiod nascondendo la complessità di strutture, configurazioni e
-puntatori.
+Il progetto è pensato per studenti di informatica: 
+- struttura semplice e leggibile 
+- compilazione manuale con `gcc` 
+- nessun Makefile 
+- esempi indipendenti
 
-Il Wrapper è costituito dai file gpio.c e gpio.h che vanno compilati insieme al
-proprio codice:
+------------------------------------------------------------------------
 
-``` c
-gcc mio_file.c gpio.c -o mio_eseguibile -lgipiod
+## Struttura del progetto
 
+    gpio_wrapper/
+    ├── docs/
+    ├── examples/
+    ├── include/
+    ├── src/
+    └── tools/
+
+-   `src/` → implementazione della libreria (GPIO + encoder)
+-   `include/` → header pubblici
+-   `examples/` → programmi di esempio
+-   `docs/` → documentazione aggiuntiva
+-   `tools/` → script di utilità (es. reset GPIO)
+
+------------------------------------------------------------------------
+
+## Requisiti
+
+Sistema: Raspberry Pi OS / Debian
+
+Installazione dipendenze:
+
+``` bash
+sudo apt update
+sudo apt install build-essential libgpiod-dev
 ```
 
 ------------------------------------------------------------------------
 
-## 🎯 Obiettivo
+## Compilazione
 
-Permettere agli studenti di utilizzare i GPIO con poche funzioni
-semplici:
+La compilazione avviene direttamente con `gcc`.
 
--   `gpio_init_out()` → configura un pin come uscita
--   `gpio_init_in()` → configura un pin come ingresso
--   `gpio_write()` → scrive 0/1 su un pin
--   `gpio_read()` → legge 0/1 da un pin
+Regola generale:
 
-Senza dover gestire direttamente strutture complesse del linguaggio C 
+``` bash
+gcc -Iinclude examples/<file>.c src/<moduli necessari>.c \
+    -lgpiod -pthread -o nome_programma
+```
 
-La libreria contiene anche funzioni per gestire i segnali PWM ed è in aggiornamento
+Esempio semplice:
 
-------------------------------------------------------------------------
-
-## 📂 Struttura del progetto
-
-    gpio_wrapper/
-    ├── esempi/
-    |   ├── led.c
-    |   ├── led_button.c    
-    |   └── esempio_led_bottone.md
-    ├── gpio.h
-    ├── gpio.c
-    └── README.md
-
-------------------------------------------------------------------------
-
-## 🔧 Requisiti
-
--   Raspberry Pi\
--   Linux (Raspberry Pi OS / Debian)\
--   `libgpiod` installata\
--   GCC
-
-Verifica che libgpiod sia disponibile:
-
-    gpiodetect
-
-Se compare `gpiochip0`, il sistema è pronto.
-
-------------------------------------------------------------------------
-
-## ⚙️ Compilazione
-
-Esempio:
-
-    gcc mio_file.c gpio.c -o mio_eseguibile -lgpiod
+``` bash
+gcc -Iinclude examples/led.c src/gpio.c \
+    -lgpiod -pthread -o led
+```
 
 Esecuzione:
 
-    ./mio_eseguibile
+``` bash
+sudo ./led
+```
 
+> Nota 1: il progetto utilizza thread (`pthread`) per il PWM, quindi è
+> necessario compilare con l'opzione `-pthread`.
 
-------------------------------------------------------------------------
-
-## 💡 Esempio: LED lampeggiante led.c
-
-------------------------------------------------------------------------
-
-## 🔘 Esempio: LED + Pulsante led_button.c
+> Nota 2: non è detto che `-pthread` sia necessario ma comunque non guasta niente
 
 ------------------------------------------------------------------------
 
-## ⚠️ Note importanti
+## Reset dei GPIO
 
--   I numeri dei pin sono in **numerazione BCM**, non numerazione
-    fisica.
--   Il wrapper è pensato per semplicità didattica, non per applicazioni
-    real-time.
--   Non include:
-    -   PWM
-    -   Interrupt
-    -   Pull-up/down interni
-    -   Gestione avanzata degli errori
+Se un programma viene interrotto con `CTRL+C` e i pin restano occupati:
+
+``` bash
+sudo ./tools/gpio_reset.sh
+```
 
 ------------------------------------------------------------------------
 
-## 📚 Scopo del progetto
+## Obiettivo didattico
 
-Questo progetto nasce per:
+Questo progetto permette di comprendere:
 
--   Corsi introduttivi di programmazione in C che usano ibrerie esterne
--   Laboratori di sistemi embedded
--   Introduzione al concetto di I/O digitale
--   Attività pratiche con Raspberry Pi
-
-L'obiettivo è permettere agli studenti di concentrarsi su:
-
--   logica booleana
--   lettura e scrittura digitale
--   interazione hardware base
-
-senza essere distratti dalla complessità dell'API ufficiale di libgpiod.
-
-------------------------------------------------------------------------
-
-## 📜 Licenza
-
-Uso libero per scopi didattici.
+-   compilazione multi-file con `gcc`
+-   uso di librerie esterne
+-   gestione dei GPIO con `libgpiod`
+-   utilizzo dei thread (`pthread`)
+-   organizzazione di un progetto C semplice ma strutturato
