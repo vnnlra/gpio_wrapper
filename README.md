@@ -51,6 +51,10 @@ Regola generale:
 gcc -Iinclude examples/<file>.c src/<moduli necessari>.c \
     -lgpiod -pthread -o nome_programma
 ```
+> Nota 1: il progetto utilizza thread (`pthread`) per il PWM, quindi è
+> necessario compilare con l'opzione `-pthread`.
+
+> Nota 2: non è detto che `-pthread` sia necessario ma comunque non guasta niente
 
 Esempio semplice:
 
@@ -65,10 +69,20 @@ Esecuzione:
 sudo ./led
 ```
 
-> Nota 1: il progetto utilizza thread (`pthread`) per il PWM, quindi è
-> necessario compilare con l'opzione `-pthread`.
+Esempio con modulo per encoder:
 
-> Nota 2: non è detto che `-pthread` sia necessario ma comunque non guasta niente
+``` bash
+gcc -Iinclude examples/led_encoder.c \
+    src/gpio.c src/encoder.c \
+    -lgpiod -pthread -o led_encoder
+```
+
+Esecuzione:
+
+``` bash
+sudo ./led_encoder
+```
+
 
 ------------------------------------------------------------------------
 
