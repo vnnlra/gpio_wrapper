@@ -1,4 +1,4 @@
-#include "gpio.h"
+#include "../include/gpio.h"
 #include <unistd.h>
 #include <stdio.h>
 
