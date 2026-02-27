@@ -45,16 +45,20 @@ sudo apt install build-essential libgpiod-dev
 
 La compilazione avviene direttamente con `gcc`.
 
-Regola generale:
+Regola generale se siamo nella root del progetto:
 
 ``` bash
 gcc -Iinclude examples/<file>.c src/<moduli necessari>.c \
     -lgpiod -pthread -o nome_programma
 ```
-> Nota 1: il progetto utilizza thread (`pthread`) per il PWM, quindi è
-> necessario compilare con l'opzione `-pthread`.
+### Significato delle opzioni
 
-> Nota 2: non è detto che `-pthread` sia necessario ma comunque non guasta niente
+-   `-Iinclude` → indica dove trovare gli header (`.h`)
+-   `-lgpiod` → collega la libreria GPIO
+-   `-pthread` → necessario perché il PWM utilizza thread POSIX
+
+Nota: `-pthread` potrebbe non essere necessaria, le ultime versioni di gpiod la includono
+
 
 Esempio semplice:
 
@@ -105,3 +109,8 @@ Questo progetto permette di comprendere:
 -   gestione dei GPIO con `libgpiod`
 -   utilizzo dei thread (`pthread`)
 -   organizzazione di un progetto C semplice ma strutturato
+
+------------------------------------------------------------------------
+
+## 📜 Licenza
+![MIT License](https://img.shields.io/badge/License-MIT-yellow.svg)
