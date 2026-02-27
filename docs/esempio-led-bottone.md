@@ -6,11 +6,8 @@ Raspberry Pi in C.
 
 ## 📷 Cablaggio esempi LED e LED+Pulsante
 
-![Schema LED e LED+Pulsante](cablaggio-led-bottone.png)
+![Schema LED e LED+Pulsante](img/led_bottone.png)
 
-## 📷 Circuito esempi LED e LED+Pulsante
-
-![Schema LED e LED+Pulsante](circuito-led-bottone.png)
 
 > Nota: il numero del pin è in numerazione BCM.
 
@@ -25,7 +22,7 @@ secondo.
 
 ## 🔌 Collegamenti
 
--   GPIO17 → Resistenza (220Ω--330Ω) → Anodo LED\
+-   GPIO17 → Anodo LED → Resistenza (220Ω--330Ω)
 -   Catodo LED → GND
 
 
@@ -71,15 +68,12 @@ Accendere il LED quando il pulsante è premuto.
 
 ## 🔌 Collegamenti
 
--   GPIO17 → Resistenza → LED → GND\
+-   GPIO17 → LED → Resistore → GND\
 -   GPIO23 → Pulsante → GND
 
 > Il pulsante è collegato verso GND (logica attiva alta se si usa
 > pull-up esterno).
 
-## 📷 Schema di collegamento
-
-![Schema LED + Pulsante](images/schema_led_button.png)
 
 ## 💻 Codice
 
